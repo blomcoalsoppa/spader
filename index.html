@@ -3,40 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-Playing Google Slides</title>
+    <title>4K Digital Signage Display</title>
     <style>
-        /* Basic styling to center the presentation and make it responsive */
-        body {
+        /* Reset margins and ensure the layout takes up exactly the full screen */
+        body, html {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #222; /* Dark background */
-        }
-        .presentation-wrapper {
             width: 100%;
-            max-width: 3840px; /* Standard 16:9 presentation width */
-            aspect-ratio: 16 / 9;
+            height: 100%;
+            background-color: #000; /* Black background to prevent white flashes while loading */
+            overflow: hidden; /* Disables scrollbars completely */
         }
+
+        /* Container mapped to viewport width/height for a perfect 16:9 fit on 4K screens */
+        .signage-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Left Panel: 70% Width */
+        .left-panel {
+            width: 70%;
+            height: 100%;
+        }
+
+        /* Right Panel: 30% Width */
+        .right-panel {
+            width: 30%;
+            height: 100%;
+        }
+
+        /* Reset iframe styles to fill their respective containers seamlessly */
         iframe {
             width: 100%;
             height: 100%;
             border: none;
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <div class="presentation-wrapper">
-        <iframe 
-            src="https://docs.google.com/presentation/d/1_A1VV3HBFnoYIHqiOLHhhiMJ-DviF_C7ZuvsJJXL3oM/embed?start=true&loop=true&delayms=15000" 
-            allowfullscreen="true" 
-            mozallowfullscreen="true" 
-            webkitallowfullscreen="true"
-            title="Embedded Google Slides Presentation">
-        </iframe>
+    <div class="signage-container">
+        <div class="left-panel">
+            <iframe 
+                src="https://docs.google.com/presentation/d/1_A1VV3HBFnoYIHqiOLHhhiMJ-DviF_C7ZuvsJJXL3oM/embed?start=true&loop=true&delayms=15000" 
+                allowfullscreen="true" 
+                title="Google Slides Presentation">
+            </iframe>
+        </div>
+
+        <div class="right-panel">
+            <iframe 
+                src="https://molnskylt.skanetrafiken.se/?stationId=81260&stationName=Lund%20Brunnsh%C3%B6gstorget&trafficTypes=%5B8%5D&departure=0&stopPoint=A&apiKey=757a4841-33f7-48b7-9fcd-9dff99704b0d" 
+                title="Skånetrafiken Live Departures">
+            </iframe>
+        </div>
     </div>
 
 </body>
