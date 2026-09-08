@@ -11,7 +11,7 @@
             width: 100%;
             height: 100%;
             background-color: #000;
-            overflow: hidden; /* no scrollbars */
+            overflow: hidden; 
         }
 
         .signage-container {
@@ -26,15 +26,29 @@
         }
 
         .right-panel {
-            display: flex;
-            flex-direction: column;
+            position: relative;
             width: 30%;
             height: 100%;
+            overflow: hidden;
         }
 
-        .right-panel .sub-panel {
+        .right-panel .sub-panel-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            z-index: 1;
+        }
+
+
+        .right-panel .sub-panel-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
             height: 50%;
+            z-index: 2;
         }
 
         iframe {
@@ -48,7 +62,6 @@
 <body>
 
     <div class="signage-container">
-        <!-- Vänster sida (70% bredd) -->
         <div class="left-panel">
             <iframe 
                 src="https://docs.google.com/presentation/d/1_A1VV3HBFnoYIHqiOLHhhiMJ-DviF_C7ZuvsJJXL3oM/embed?start=true&loop=true&delayms=18000&rm=minimal" 
@@ -58,15 +71,14 @@
         </div>
 
         <div class="right-panel">
-            <!-- Övre halvan -->
-            <div class="sub-panel">
+            <div class="sub-panel-top">
                 <iframe 
                     src="https://molnskylt.skanetrafiken.se/?stationId=81260&stationName=Brunnshögstorget&trafficTypes=[8]&departure=0&stopPoint=&apiKey=757a4841-33f7-48b7-9fcd-9dff99704b0d" 
-                    title="Departures">
+                    title="Bht">
                 </iframe>
             </div>
             
-            <div class="sub-panel">
+            <div class="sub-panel-bottom">
                 <iframe 
                     src="https://molnskylt.skanetrafiken.se/?stationId=81126&stationName=Solbjer&trafficTypes=[2]&departure=0&stopPoint=&apiKey=757a4841-33f7-48b7-9fcd-9dff99704b0d" 
                     title="Regionbussar">
