@@ -5,36 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Signage Display</title>
     <style>
-        /* Reset margins and ensure the layout takes up exactly the full screen */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            background-color: #000; /* Black background to prevent white flashes while loading */
+            background-color: #000;
             overflow: hidden; /* no scrollbars */
         }
 
-        /* Container mapped to viewport width/height for 16:9 fit on 4K screens */
         .signage-container {
             display: flex;
             width: 100vw;
             height: 100vh;
         }
 
-        /* Left Panel: 70% Width */
         .left-panel {
             width: 70%;
             height: 100%;
         }
 
-        /* Right Panel: 30% Width */
         .right-panel {
+            display: flex;
+            flex-direction: column;
             width: 30%;
             height: 100%;
         }
 
-        /* Reset iframe styles to fill their respective containers seamlessly */
+        .right-panel .sub-panel {
+            width: 100%;
+            height: 50%;
+        }
+
         iframe {
             width: 100%;
             height: 100%;
@@ -46,6 +48,7 @@
 <body>
 
     <div class="signage-container">
+        <!-- Vänster sida (70% bredd) -->
         <div class="left-panel">
             <iframe 
                 src="https://docs.google.com/presentation/d/1_A1VV3HBFnoYIHqiOLHhhiMJ-DviF_C7ZuvsJJXL3oM/embed?start=true&loop=true&delayms=18000&rm=minimal" 
@@ -55,10 +58,20 @@
         </div>
 
         <div class="right-panel">
-            <iframe 
-                src="https://molnskylt.skanetrafiken.se/?stationId=81260&stationName=Brunnshögstorget&trafficTypes=[8]&departure=0&stopPoint=&apiKey=757a4841-33f7-48b7-9fcd-9dff99704b0d" 
-                title="Departures">
-            </iframe>
+            <!-- Övre halvan -->
+            <div class="sub-panel">
+                <iframe 
+                    src="https://molnskylt.skanetrafiken.se/?stationId=81260&stationName=Brunnshögstorget&trafficTypes=[8]&departure=0&stopPoint=&apiKey=757a4841-33f7-48b7-9fcd-9dff99704b0d" 
+                    title="Departures">
+                </iframe>
+            </div>
+            
+            <div class="sub-panel">
+                <iframe 
+                    src="https://molnskylt.skanetrafiken.se/?stationId=81126&stationName=Solbjer&trafficTypes=[2]&departure=0&stopPoint=&apiKey=757a4841-33f7-48b7-9fcd-9dff99704b0d" 
+                    title="Regionbussar">
+                </iframe>
+            </div>
         </div>
     </div>
 
